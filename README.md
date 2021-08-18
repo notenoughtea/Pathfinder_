@@ -27,7 +27,7 @@ npm i
 npx sequelize db:migrate
 npx sequelize db:seed:all
 
-Запуск приложения и засеивание базы:
+Запуск приложения:
 /client
 npm i 
 npm start
