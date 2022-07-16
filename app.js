@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
 const bodyParser = require('body-parser')
+const RedisServer = require('redis-server');
 
 const authRouter = require('./routes/auth');
 const userRouter = require('./routes/userRouter');
@@ -17,6 +18,14 @@ const session = require("express-session");
 const { userInfo } = require('os');
 let RedisStore = require("connect-redis")(session);
 let redisClient = redis.createClient();
+
+const server = new RedisServer(6379);
+server.open((err) => {
+    if (err === null) {
+        // You may now connect a client to the Redis
+        // server bound to port 6379.
+    }
+});
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
