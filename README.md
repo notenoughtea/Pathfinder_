@@ -8,14 +8,14 @@
 
 -----------
 
-[Главная страница](public/stylesheets/screenshot0.png)  
-![Главная страница](public/stylesheets/screenshot0.png "mainpage")  
+[Главная страница](pathfinder/public/stylesheets/screenshot0.png)  
+![Главная страница](pathfinder/public/stylesheets/screenshot0.png "mainpage")  
 
-[Карточка маршрута](public/stylesheets/screenshot1.png)
-![Карточка маршрута](public/stylesheets/screenshot1.png "card")  
+[Карточка маршрута](pathfinder/public/stylesheets/screenshot1.png)
+![Карточка маршрута](pathfinder/public/stylesheets/screenshot1.png "card")  
 
-[Превью маршрута на встроенных Google Maps API](public/stylesheets/screenshot2.png)
-![Превью маршрута на встроенных Google Maps API](public/stylesheets/screenshot2.png "preview")  
+[Превью маршрута на встроенных Google Maps API](pathfinder/public/stylesheets/screenshot2.png)
+![Превью маршрута на встроенных Google Maps API](pathfinder/public/stylesheets/screenshot2.png "preview")  
 
 
 
