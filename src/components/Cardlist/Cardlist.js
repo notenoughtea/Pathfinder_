@@ -1,4 +1,5 @@
 import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
@@ -7,6 +8,15 @@ import "react-multi-carousel/lib/styles.css";
 import { server } from "../../constants";
 import UpBtn from "../UpBtn/UpBtn";
 import CardRoutes from "./Card/Card";
+
+const useStyles = makeStyles({
+  note: {
+    position: "absolute",
+    top: "229vh",
+    left: "33vw",
+    color: "white",
+  },
+});
 
 const responsive = {
   superLargeDesktop: {
@@ -28,6 +38,7 @@ const responsive = {
 };
 
 export default function Cardlist() {
+  const classes = useStyles();
   const cards = useSelector((state) => state.cards.cards);
 
   const [bg, setBg] = useState(null);
@@ -36,27 +47,27 @@ export default function Cardlist() {
   }, []);
 
   return (
-    <div id="cardlist">
-      <div>
-        {bg && (
-          <div
-            className="bg"
-            style={{
-              height: "270px",
-              backgroundImage: `url(${server}${bg.url})`,
-              backgroundPosition: "center",
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-            }}
-          />
-        )}
+      <div id="cardlist">
+        <div>
+          {bg && (
+              <div
+                  className="bg"
+                  style={{
+                    height: "270px",
+                    backgroundImage: `url(${server}${bg.url})`,
+                    backgroundPosition: "center",
+                    backgroundSize: "cover",
+                    backgroundRepeat: "no-repeat",
+                  }}
+              />
+          )}
+        </div>
+        <Carousel className="carouselContainer" responsive={responsive}>
+          {cards.map((item) => (
+              <CardRoutes item={item} key={item.id}/>
+          ))}
+        </Carousel>
+        <UpBtn/>
       </div>
-      <Carousel className="carouselContainer" responsive={responsive}>
-        {cards.map((item) => (
-          <CardRoutes item={item} key={item.id}/>
-        ))}
-      </Carousel>
-      <UpBtn/>
-    </div>
   );
 }
