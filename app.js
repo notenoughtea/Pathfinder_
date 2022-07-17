@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
 const bodyParser = require('body-parser')
-const RedisServer = require('redis-server');
+const config = require('./db/config/database.json')
 
 const authRouter = require('./routes/auth');
 const userRouter = require('./routes/userRouter');
@@ -13,19 +13,8 @@ const routesRouter = require('./routes/routesRouter');
 const uploadRouter = require('./routes/uploadRouter');
 
 const app = express();
-const redis = require("redis");
 const session = require("express-session");
 const { userInfo } = require('os');
-let RedisStore = require("connect-redis")(session);
-let redisClient = redis.createClient();
-
-const server = new RedisServer(6379);
-server.open((err) => {
-    if (err === null) {
-        // You may now connect a client to the Redis
-        // server bound to port 6379.
-    }
-});
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -41,21 +30,29 @@ app.use(express.urlencoded({limit: '50mb', extended: true, parameterLimit: 50000
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(
-  session({
-    name: "sId",
-    store: new RedisStore({ client: redisClient }),
-    saveUninitialized: false,
-    secret: "Chubaka",
-    resave: false,
-    cookie: {
-      secure: false,
-      httpOnly: true,
-      maxAge: 1e3 * 86400,
-    }
-  }),
-  
-);
+// const { Client } = require('pg')
+//
+// const client = new Client(config)
+// client.connect()
+//
+// const store = new (require('connect-pg-simple')(session))({
+//     config,
+// })
+
+// app.use(
+//   session({
+//     name: "sId",
+//     store: store,
+//     saveUninitialized: false,
+//     secret: "Chubaka",
+//     resave: false,
+//     cookie: {
+//       secure: false,
+//       httpOnly: true,
+//       maxAge: 1e3 * 86400,
+//     }
+//   }),
+// );
 
 app.use('/', routesRouter);
 app.use('/auth', authRouter);
