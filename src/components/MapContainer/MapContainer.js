@@ -29,19 +29,19 @@ const containerStyle = {
   height: "100vh",
 };
 
-const defaultZoom = 9;
-const defaultCenter = {
-  lat: 43.44514365102102,
-  lng: 41.73673191647548,
-};
+// const defaultZoom = 9;
+// const defaultCenter = {
+//   lat: 43.44514365102102,
+//   lng: 41.73673191647548,
+// };
 
-const defaultMarkerPosition = {
-  lat: 43.44514365102102,
-  lng: 41.73673191647548,
-};
+// const defaultMarkerPosition = {
+//   lat: 43.44514365102102,
+//   lng: 41.73673191647548,
+// };
 
 const infoBoxOptions = { closeBoxURL: "", enableEventPropagation: true };
-const options = { streetViewControl: false };
+// const options = { streetViewControl: false };
 
 function MapContainer() {
   const classes = useStyles(); //
@@ -50,9 +50,9 @@ function MapContainer() {
     googleMapsApiKey: "AIzaSyApzvj3AYiAkv1Vr9x48zJ1NpK4DuqE-1M",
   });
 
-  const [center, setCenter] = useState(defaultCenter);
-  const [zoom, setZoom] = useState(defaultZoom);
-  const [markersList, setMarkersList] = useState([]);
+  // const [center, setCenter] = useState(defaultCenter);
+  // const [zoom, setZoom] = useState(defaultZoom);
+  // const [markersList, setMarkersList] = useState([]);
   const [open, setOpen] = useState(false);
   const [cords, setCords] = useState({});
   const [cardProps, setCardProps] = useState({});
@@ -65,21 +65,21 @@ function MapContainer() {
     await setOpen(e3);
   };
 
-  const [popoverOpen, setPopoverOpen] = useState(false);
+  // const [popoverOpen, setPopoverOpen] = useState(false);
 
-  const toggle = () => setPopoverOpen(!popoverOpen);
+  // const toggle = () => setPopoverOpen(!popoverOpen);
 
   useEffect(() => {
     setMarkersList(cards);
   }, [cards]);
   const allMarks = () => {
     if (cards) {
-      const onLoad = (infoBox) => {};
+      const onLoad = () => {};
 
       return cards.map((el) => (
-        <div>
+        <div key={el.id}
+        >
           <Marker
-            key={el.id}
             clickable={true}
             position={{
               lat: el.lat / 1,
@@ -96,7 +96,7 @@ function MapContainer() {
                 true
               );
             }}
-          ></Marker>
+          />
           {open && (
             <InfoBox onLoad={onLoad} options={infoBoxOptions} position={cords}>
               <MarkerCard cardProps={cardProps} />
@@ -131,7 +131,7 @@ function MapContainer() {
           <Tooltip title="down" aria-label="add">
             <Fab color="primary" className={classes.fab}>
               <Link to="cardlist" smooth={true} duration={100}>
-                <ArrowDownwardIcon></ArrowDownwardIcon>
+                <ArrowDownwardIcon/>
               </Link>
             </Fab>
           </Tooltip>
@@ -146,7 +146,7 @@ function MapContainer() {
           <Tooltip title="up" aria-label="add">
             <Fab color="primary" className={classes.fab}>
               <Link to="header" smooth={true} duration={100}>
-                <ArrowUpwardIcon></ArrowUpwardIcon>
+                <ArrowUpwardIcon/>
               </Link>
             </Fab>
           </Tooltip>

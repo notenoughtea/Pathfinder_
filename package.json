@@ -1,5 +1,5 @@
 {
-  "name": "Pathfinder_",
+  "name": "pathfinder",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -61,9 +61,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "redis": "redis-server",
     "express": "node ./bin/www",
     "dev": "nodemon ./bin/www"
+  },
+  "engines" : {
+    "npm" : ">=7.0.0",
+    "node" : ">=16.0.0"
   },
   "browserslist": {
     "production": [
