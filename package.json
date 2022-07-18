@@ -65,8 +65,8 @@
   },
   "proxy": "http://localhost:3000",
   "engines": {
-    "npm": ">=8.14.0",
-    "node": ">=18.3.0"
+    "npm": "8.14.0",
+    "node": "18.3.0"
   },
   "browserslist": {
     "production": [
